@@ -328,9 +328,9 @@ function Contact() {
       <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-4 text-muted-foreground"><p className="flex gap-3"><Icons.MapPin className="text-primary" />200 Harbor Avenue, Boston, MA</p><p className="flex gap-3"><Icons.Phone className="text-primary" />+1 (617) 555-0142</p><p className="flex gap-3"><Icons.Mail className="text-primary" />care@medinova.health</p><p className="flex gap-3"><Icons.Clock className="text-primary" />Mon–Sat 7:00–21:00 · Emergency 24/7</p></div>
         <form onSubmit={submit} className="space-y-4 rounded-2xl bg-card p-6 shadow-soft" noValidate>
-          <div><Input placeholder="Name" value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} />{err.name && <p className="mt-1 text-sm text-destructive">{err.name}</p>}</div>
-          <div><Input placeholder="Email" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} />{err.email && <p className="mt-1 text-sm text-destructive">{err.email}</p>}</div>
-          <div><Textarea placeholder="How can we help?" value={f.message} onChange={(e) => setF({ ...f, message: e.target.value })} />{err.message && <p className="mt-1 text-sm text-destructive">{err.message}</p>}</div>
+          <div><Input placeholder="Name" value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} />{err["name"] && <p className="mt-1 text-sm text-destructive">{err["name"]}</p>}</div>
+          <div><Input placeholder="Email" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} />{err["email"] && <p className="mt-1 text-sm text-destructive">{err["email"]}</p>}</div>
+          <div><Textarea placeholder="How can we help?" value={f.message} onChange={(e) => setF({ ...f, message: e.target.value })} />{err["message"] && <p className="mt-1 text-sm text-destructive">{err["message"]}</p>}</div>
           <Button type="submit" className="w-full">Send message</Button>
         </form>
       </div>
