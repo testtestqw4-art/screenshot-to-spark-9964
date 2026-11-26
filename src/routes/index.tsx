@@ -58,7 +58,7 @@ function Index() {
   const mounted = useMounted();
   const [service, setService] = useState<(typeof services)[number] | null>(null);
   const [profile, setProfile] = useState<Doctor | null>(null);
-  const [preset, setPreset] = useState<{ dept?: string; doc?: number; key: number }>({ key: 0 });
+  const [preset, setPreset] = useState<{ dept?: string | undefined; doc?: number | undefined; key: number }>({ key: 0 });
   const book = (d?: Doctor) => { setProfile(null); setPreset({ dept: d?.dept, doc: d?.id, key: Date.now() }); go("booking"); };
 
   return (

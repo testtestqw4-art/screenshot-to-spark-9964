@@ -29,9 +29,9 @@ function FallbackHeart() {
 }
 
 class Boundary extends Component<{ children: ReactNode }, { err: boolean }> {
-  state = { err: false };
+  override state = { err: false };
   static getDerivedStateFromError() { return { err: true }; }
-  render() { return this.state.err ? <FallbackHeart /> : this.props.children; }
+  override render() { return this.state.err ? <FallbackHeart /> : this.props.children; }
 }
 
 function Fit({ children }: { children: ReactNode }) {
