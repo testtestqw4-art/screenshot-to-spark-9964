@@ -186,7 +186,7 @@ function Doctors({ onProfile, onBook }: { onProfile: (d: Doctor) => void; onBook
 
 const patientSchema = z.object({ name: z.string().trim().min(2, "Enter your full name").max(80), email: z.string().trim().email("Enter a valid email"), phone: z.string().trim().regex(/^[+\d\s()-]{7,20}$/, "Enter a valid phone") });
 
-function Booking({ preset }: { preset: { dept?: string; doc?: number } }) {
+function Booking({ preset }: { preset: { dept?: string | undefined; doc?: number | undefined } }) {
   const [step, setStep] = useState(preset.doc !== undefined ? 3 : preset.dept ? 2 : 1);
   const [dept, setDept] = useState(preset.dept ?? ""); const [doc, setDoc] = useState<number | undefined>(preset.doc);
   const [date, setDate] = useState(""); const [slot, setSlot] = useState("");

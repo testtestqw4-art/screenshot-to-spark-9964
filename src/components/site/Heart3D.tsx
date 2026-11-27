@@ -12,7 +12,9 @@ function Model() {
   useFrame((s, d) => {
     if (!ref.current) return;
     ref.current.rotation.y += Math.min(d, 0.05) * 0.3;
-    ref.current.rotation.x += (s.pointer.y * 0.3 - ref.current.rotation.x) * 0.05;
+    const t = s.clock.elapsedTime % 0.86;
+    const beat = 1 + Math.exp(-((t - 0.08) ** 2) / 0.002) * 0.05 + Math.exp(-((t - 0.3) ** 2) / 0.003) * 0.03;
+    ref.current.scale.setScalar(beat);
   });
   return <group ref={ref}><Center><primitive object={scene} scale={k} /></Center></group>;
 }
@@ -52,7 +54,7 @@ export default function Heart3D() {
       <Float speed={1.5} floatIntensity={0.6}>
         <Boundary><Suspense fallback={<FallbackHeart />}><Fit><AutoScale /></Fit></Suspense></Boundary>
       </Float>
-      <OrbitControls enableZoom={false} enablePan={false} />
+      <OrbitControls enableZoom={false} enablePan={false} enableDamping minPolarAngle={Math.PI / 3} maxPolarAngle={(Math.PI * 2) / 3} />
     </Canvas>
   );
 }
@@ -60,3 +62,5 @@ export default function Heart3D() {
 function AutoScale() {
   return <Model />;
 }
+
+useGLTF.preload(heart.url);
